@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixels Web Tech - Your Vision, Digitally Crafted</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e7eb;
+        }
+        .pixel-brand {
+            color: #D98410;
+        }
+        .nav-scrolled {
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .hero-bg {
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .typewriter-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.5em;
+            background-color: #D98410;
+            animation: blink 0.7s infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(217, 132, 16, 0.1), transparent 40%);
+            transform: rotate(0deg);
+            transition: transform 0.8s ease;
+        }
+        .service-card:hover:before {
+            transform: rotate(360deg);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(217, 132, 16, 0.3);
+            border-color: #D98410;
+        }
+        .glow-button {
+            background-color: #D98410;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(217, 132, 16, 0.5);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(217, 132, 16, 0.8);
+            transform: scale(1.05);
+        }
+        .section-title-underline {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .section-title-underline::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #D98410;
+            border-radius: 2px;
+        }
+        .form-input {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #D98410;
+            box-shadow: 0 0 15px rgba(217, 132, 16, 0.5);
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes fadeMove {
+            from { opacity: 0.3; transform: translateY(0px); }
+                to { opacity: 1; transform: translateY(-5px); }
+                }
+            #rrt {
+              animation: fadeMove 2s infinite alternate;
+            }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-3xl font-bold tracking-wider">
+                Pixels<span class="pixel-brand"> </span>Web<span class="pixel-brand"> </span>Tech<br><p id="rrt" style="font-size:12px; 
+                   display:inline-block; 
+                   animation: fadeMove 2s infinite alternate;">
+  Smart Move, Smart Solution
+</p>
+
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-300 hover:text-orange-400 transition">Home</a>
+                <a href="#services" class="text-gray-300 hover:text-orange-400 transition">Services</a>
+                <a href="#about" class="text-gray-300 hover:text-orange-400 transition">About Us</a>
+                <a href="#contact" class="text-gray-300 hover:text-orange-400 transition">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-3xl focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-90">
+            <a href="#home" class="block text-center py-4 text-lg hover:bg-orange-400 hover:text-gray-900 transition">Home</a>
+            <a href="#services" class="block text-center py-4 text-lg hover:bg-orange-400 hover:text-gray-900 transition">Services</a>
+            <a href="#about" class="block text-center py-4 text-lg hover:bg-orange-400 hover:text-gray-900 transition">About Us</a>
+            <a href="#contact" class="block text-center py-4 text-lg hover:bg-orange-400 hover:text-gray-900 transition">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero-bg h-screen flex items-center justify-center text-center">
+            <div id="particles-js"></div>
+            <div class="hero-content container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
+                    Crafting the <span class="pixel-brand">Future</span> of the Web
+                </h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
+                    We build stunning, high-performance websites and digital experiences. 
+                    <span id="typewriter" class="font-semibold pixel-brand"></span><span class="typewriter-cursor"></span>
+                </p>
+                <a href="#contact" class="glow-button text-white font-bold py-3 px-8 rounded-full text-lg">
+                    Start Your Project
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold section-title-underline">Our Services</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">From concept to launch, we provide the complete digital toolkit for your business.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="service-card p-8 rounded-lg text-center fade-in-up">
+                        <div class="mb-6">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c.251.023.501.05.75.082a9.753 9.753 0 017.5 7.417c.456 1.642-.126 3.422-1.28 4.629-1.154 1.206-2.84.94-4.22-.162l-2.26-2.26a1.5 1.5 0 00-2.122 0l-2.26 2.26c-1.38.106-2.066.88-2.066 1.76V18c0 .414.336.75.75.75h14.25c.414 0 .75-.336.75-.75v-2.24c0-.88-.686-1.654-2.066-1.76l-2.26-2.26a1.5 1.5 0 00-2.122 0l-2.26 2.26c-1.38.106-2.84.94-4.22.162-1.154-1.207-1.736-2.987-1.28-4.629a9.753 9.753 0 017.5-7.417c.25-.032.5-.06.75-.082z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Website Design</h3>
+                        <p class="text-gray-400">Visually stunning and user-friendly websites tailored for any industry, ensuring a seamless experience on all devices.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="service-card p-8 rounded-lg text-center fade-in-up" style="transition-delay: 0.2s;">
+                         <div class="mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l.383-1.437M7.5 14.25L5.106 5.165A2.25 2.25 0 002.83 3.5H2.25m1.125 0c.11.13.21.27.3.42.09.15.16.315.22.485C4.12 5.19 4.5 6.63 4.5 8.25c0 1.62.38 3.06.87 4.145a5.98 5.98 0 00.22.485c.09.15.19.29.3.42m0 0h11.25m-11.25 0c.11-.13.21-.27.3-.42.09-.15.16-.315.22-.485a5.98 5.98 0 01.87-4.145c.49-1.085.87-2.525.87-4.145V4.5a2.25 2.25 0 00-2.25-2.25H3.375m11.25 0c.11.13.21.27.3.42.09.15.16.315.22.485C15.38 5.19 15.75 6.63 15.75 8.25c0 1.62-.38 3.06-.87 4.145a5.98 5.98 0 01-.22.485c-.09.15-.19.29-.3.42m0 0h-11.25" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">E-commerce Solutions</h3>
+                        <p class="text-gray-400">Powerful e-commerce platforms with secure payment gateways and intuitive inventory management.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="service-card p-8 rounded-lg text-center fade-in-up" style="transition-delay: 0.4s;">
+                        <div class="mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 100 15 7.5 7.5 0 000-15zM21 21l-5.197-5.197" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Digital Marketing</h3>
+                        <p class="text-gray-400">Boost your online presence with our data-driven SEO, SEM, and SMO strategies that deliver measurable results.</p>
+                    </div>
+                     <!-- Service Card 4 -->
+                    <div class="service-card p-8 rounded-lg text-center fade-in-up" style="transition-delay: 0.6s;">
+                        <div class="mb-6">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a15.045 15.045 0 01-7.5 0C4.508 19.654 2.25 16.182 2.25 12c0-4.182 2.258-7.654 5.25-9.622m1.087 11.026a5.005 5.005 0 005.63-5.63m-5.63 5.63a5.005 5.005 0 01-5.63-5.63m10.125 10.125a12.06 12.06 0 01-4.5 0" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Business Protocols</h3>
+                        <p class="text-gray-400">Streamline your operations with our custom web-based business protocols and workflow automation.</p>
+                    </div>
+                     <!-- Service Card 5 -->
+                    <div class="service-card p-8 rounded-lg text-center fade-in-up" style="transition-delay: 0.8s;">
+                         <div class="mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.25 22.5l-.648-1.938a3.375 3.375 0 00-2.672-2.672L11.25 18l1.938-.648a3.375 3.375 0 002.672-2.672L16.25 13.5l.648 1.938a3.375 3.375 0 002.672 2.672L21.5 18l-1.938.648a3.375 3.375 0 00-2.672 2.672z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Graphical Design</h3>
+                        <p class="text-gray-400">Crafting unique brand identities through logos, business cards, catalogues, and other marketing materials.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 md:py-32 bg-gray-900" style="background-color: #0c0c0c;">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-up">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 section-title-underline">About Pixels Web Tech</h2>
+                        <p class="text-lg text-gray-400 mb-4">
+                            We are a passionate team of designers, developers, and digital strategists dedicated to helping businesses succeed online. Our philosophy is simple: combine creative design with robust technology to deliver exceptional results.
+                        </p>
+                        <p class="text-gray-400">
+                            Founded in 2020, Pixels Web Tech was born from a desire to create digital experiences that are not only beautiful but also intuitive, effective, and goal-oriented. We believe in building long-term partnerships with our clients, becoming a true extension of their team.
+                        </p>
+                    </div>
+                    <div class="fade-in-up" style="transition-delay: 0.2s;">
+                        <img src="https://placehold.co/600x400/D98410/0a0a0a?text=Our+Team" alt="Pixels Web Tech Team" class="rounded-lg shadow-2xl w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold section-title-underline">Get In Touch</h2>
+            <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Have a project in mind? We'd love to hear from you. Let's create something amazing together.</p>
+        </div>
+        <div class="max-w-4xl mx-auto">
+            <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in-up">
+                <div>
+                    <label for="name" class="sr-only">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Your Name" class="w-full form-input rounded-md py-3 px-4 text-white">
+                </div>
+                <div>
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Your Email" class="w-full form-input rounded-md py-3 px-4 text-white">
+                </div>
+                <div class="md:col-span-2">
+                    <label for="subject" class="sr-only">Subject</label>
+                    <input type="text" name="subject" id="subject" placeholder="Subject" class="w-full form-input rounded-md py-3 px-4 text-white">
+                </div>
+                <div class="md:col-span-2">
+                    <label for="message" class="sr-only">Message</label>
+                    <textarea name="message" id="message" rows="6" placeholder="Your Message" class="w-full form-input rounded-md py-3 px-4 text-white"></textarea>
+                </div>
+                <div class="md:col-span-2 text-center">
+                    <button type="submit" class="glow-button text-white font-bold py-3 px-12 rounded-full text-lg">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 Pixels Web Tech. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                 <!-- Add your social media links here -->
+                <a href="#" class="hover:text-orange-400">Facebook</a>
+                <a href="#" class="hover:text-orange-400">Twitter</a>
+                <a href="#" class="hover:text-orange-400">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Particles.js Script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Navbar Scroll Effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('nav-scrolled');
+                } else {
+                    header.classList.remove('nav-scrolled');
+                }
+            });
+
+            // Typewriter Effect
+            const typewriterElement = document.getElementById('typewriter');
+            const words = ["We bring ideas to life.", "We drive business growth.", "We build digital masterpieces."];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    setTimeout(() => isDeleting = true, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+
+                const typingSpeed = isDeleting ? 100 : 150;
+                setTimeout(type, typingSpeed);
+            }
+            type();
+
+            // Particles.js configuration
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#D98410" },
+                    "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
+                    "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                    "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.1, "width": 1 },
+                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                    "modes": {
+                        "grab": { "distance": 140, "line_linked": { "opacity": 0.3 } },
+                        "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
+                        "repulse": { "distance": 200, "duration": 0.4 },
+                        "push": { "particles_nb": 4 },
+                        "remove": { "particles_nb": 2 }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // Scroll Animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        // constact
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // prevent normal form submit
+
+    // Get input values
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let subject = document.getElementById("subject").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    // Validation check
+    if(!name || !email || !subject || !message){
+        alert("⚠️ Please fill in all fields before sending.");
+        return;
+    }
+
+    // WhatsApp number (with country code, no + or spaces)
+    let phoneNumber = "919385612588"; // replace with your WhatsApp number
+
+    // Format message
+    let whatsappMessage = `*New Contact Message*%0A
+Name: ${name}%0A
+Email: ${email}%0A
+Subject: ${subject}%0A
+Message: ${message}`;
+
+    // Open WhatsApp
+    let whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+    window.open(whatsappURL, "_blank");
+});
+    </script>
+
+</body>
+</html>
